@@ -55,8 +55,8 @@ const Chatbot: React.FC = () => {
     setIsLoading(true);
 
     try {
-      // Replace with your FastAPI backend URL
-      const backendUrl = 'http://localhost:8000'; 
+      // Use environment variable for backend URL, fallback to localhost for development
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000'; 
       const response = await fetch(`${backendUrl}/chat`, {
         method: 'POST',
         headers: {

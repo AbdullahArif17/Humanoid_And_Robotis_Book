@@ -4,6 +4,16 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+// Determine if we're in production (GitHub Pages) or local development
+const isProduction = process.env.NODE_ENV === 'production';
+
+// GitHub Pages configuration
+const githubOrgName = 'AbdullahArif17'; // Set directly for local development
+const githubProjectName = 'Humanoid_And_Robotis_Book'; // Set directly for local development
+const githubRepoUrl = process.env.GITHUB_REPO_URL || `https://github.com/${githubOrgName}/${githubProjectName}`;
+const githubPagesUrl = process.env.GITHUB_PAGES_URL || `https://${githubOrgName.toLowerCase()}.github.io`;
+const projectBaseUrl = process.env.PROJECT_BASE_URL || `/${githubProjectName}/`;
+
 const config: Config = {
   title: 'Humanoid & Robotics Book',
   tagline: 'Physical AI & Humanoid Robotics: From Theory to Autonomous Action',
@@ -15,17 +25,22 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: '[GITHUB_PAGES_URL]', // Changed for local development. Update for GitHub Pages deployment.
+  url: isProduction ? githubPagesUrl : 'http://localhost:3000',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '[PROJECT_BASE_URL]', 
+  baseUrl: isProduction ? projectBaseUrl : '/',
 
   // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: '[GITHUB_ORGANIZATION_NAME]', // Generic value for local development. Update for GitHub Pages deployment.
-  projectName: '[GITHUB_PROJECT_NAME]', // Generic value for local development. Update for GitHub Pages deployment.
+  organizationName: githubOrgName,
+  projectName: githubProjectName,
 
   onBrokenLinks: 'throw',
+  
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -41,14 +56,12 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            '[GITHUB_REPO_EDIT_URL]', // TODO: Update with your actual GitHub repo URL
+          editUrl: `${githubRepoUrl}/tree/main/book/`,
         },
         blog: { 
           showReadingTime: true,
-          editUrl: '[GITHUB_REPO_EDIT_URL]',
+          editUrl: `${githubRepoUrl}/tree/main/book/`,
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -76,8 +89,10 @@ const config: Config = {
           position: 'left',
           label: 'Book Modules',
         },
+        {to: '/blog', label: 'Blog', position: 'left'},
+        {to: '/chatbot-page', label: 'Chatbot', position: 'left'}, // Added Chatbot link
         {
-          href: '[GITHUB_REPO_URL]', // TODO: Update with your actual GitHub repo URL
+          href: githubRepoUrl,
           label: 'GitHub',
           position: 'right',
         },
@@ -93,22 +108,22 @@ const config: Config = {
               label: 'Introduction',
               to: '/docs/intro',
             },
+            {
+              label: 'Chatbot',
+              to: '/chatbot-page',
+            },
           ],
         },
         {
           title: 'Community',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'GitHub Discussions',
+              href: `${githubRepoUrl}/discussions`,
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
+              label: 'Issues',
+              href: `${githubRepoUrl}/issues`,
             },
           ],
         },
@@ -116,16 +131,22 @@ const config: Config = {
           title: 'More',
           items: [
             {
+              label: 'Blog',
+              to: '/blog',
+            },
+            {
               label: 'GitHub',
-              href: '[GITHUB_REPO_URL]', // TODO: Update with your actual GitHub repo URL
+              href: githubRepoUrl,
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Humanoid & Robotics Book. Built with Docusaurus.`,    },
+      copyright: `Copyright © ${new Date().getFullYear()} Humanoid & Robotics Book. Built with Docusaurus.`,
+    },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      additionalLanguages: ['python', 'bash', 'json', 'yaml'],
     },
   } satisfies Preset.ThemeConfig,
 };

@@ -1,4 +1,4 @@
-import type {ReactNode} from 'react';
+import type { ReactNode } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -9,19 +9,31 @@ import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
         <Heading as="h1" className="hero__title">
           {siteConfig.title}
         </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+
+        <p className="hero__subtitle">
+          AI-Native Book on Physical AI, Humanoid Robotics, ROS 2, Gazebo, Isaac Sim, and Vision-Language-Action.
+        </p>
+
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
+            to="/docs/intro"
+          >
+            Start Reading the Book 🚀
+          </Link>
+
+          <Link
+            className="button button--secondary button--lg"
+            to="/docs/chatbot"
+          >
+            Try the Integrated RAG Chatbot 🤖
           </Link>
         </div>
       </div>
@@ -30,11 +42,12 @@ function HomepageHeader() {
 }
 
 export default function Home(): ReactNode {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={`${siteConfig.title}`}
+      description="A complete AI-native technical book on Physical AI, Humanoid Robotics, ROS 2, Gazebo, ISAAC Sim, and VLA—powered by Spec-Kit Plus and Claude Code."
+    >
       <HomepageHeader />
       <main>
         <HomepageFeatures />

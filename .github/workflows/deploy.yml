@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # Set a branch to deploy from
+      - main
 
 jobs:
   deploy:
@@ -11,50 +11,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      
       - name: Install dependencies
         run: npm install
         working-directory: ./book
+      
       - name: Build Docusaurus website
         run: npm run build
         working-directory: ./book
         env:
-          # Assuming baseUrl is '/<projectName>/' for project pages
-          # or '/' for user/organization pages.
-          # Update these as needed in docusaurus.config.ts
-          # [PROJECT_BASE_URL]: Will be replaced by actual value during build
-          # [GITHUB_ORGANIZATION_NAME]: Will be replaced by actual value during build
-          # [GITHUB_PROJECT_NAME]: Will be replaced by actual value during build
-          # [GITHUB_PAGES_URL]: Will be replaced by actual value during build
-          # [GITHUB_REPO_EDIT_URL]: Will be replaced by actual value during build
-          # [GITHUB_REPO_URL]: Will be replaced by actual value during build
-          # For example:
-          # GITHUB_ORGANIZATION_NAME: your-github-username-or-org
-          # GITHUB_PROJECT_NAME: your-repo-name
-          # PROJECT_BASE_URL: /your-repo-name/
-          # GITHUB_PAGES_URL: https://your-github-username-or-org.github.io/your-repo-name
-          # GITHUB_REPO_EDIT_URL: https://github.com/your-github-username-or-org/your-repo-name/tree/main/book/
-          # GITHUB_REPO_URL: https://github.com/your-github-username-or-org/your-repo-name
-          
-          # Replace placeholders in docusaurus.config.ts for build
-          # This assumes a simple find-and-replace is sufficient.
-          # For more complex configurations, consider using sed or a custom script.
-          # For now, we'll assume the user will update docusaurus.config.ts directly
-          # before deployment with actual values if not using environment variables
-          # in the config itself.
-          
+          # Configure these environment variables for your deployment
+          GITHUB_ORGANIZATION_NAME: AbdullahArif17
+          GITHUB_PROJECT_NAME: Humanoid_And_Robotis_Book
+          PROJECT_BASE_URL: /Humanoid_And_Robotis_Book/
+          GITHUB_PAGES_URL: https://abdullaharif17.github.io/Humanoid_And_Robotis_Book
+          GITHUB_REPO_EDIT_URL: https://github.com/AbdullahArif17/Humanoid_And_Robotis_Book/tree/main/book/
+          GITHUB_REPO_URL: https://github.com/AbdullahArif17/Humanoid_And_Robotis_Book
+      
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./book/build
-          # The following will replace the placeholders in docusaurus.config.ts
-          # and is intended for a single repository (project page) deployment.
-          # For user/organization pages, publish_branch might be `gh-pages` directly.
-          # For project pages, publish_branch is often `gh-pages` and Docusaurus
-          # handles the base URL.
-          # The `base_url` is derived from `baseUrl` in `docusaurus.config.ts`
-          # by Docusaurus itself during the build, so we don't need to pass it here directly.
-          # For this hackathon, we assume a project page deployment.
+          publish_branch: gh-pages

@@ -8,8 +8,14 @@ node_modules/
 
 # RAG Chatbot backend
 rag-chatbot/__pycache__/
+rag-chatbot/**/__pycache__/
 rag-chatbot/venv/
 rag-chatbot/.env
+rag-chatbot/.pytest_cache/
+rag-chatbot/**/.pytest_cache/
+*.pyc
+*.pyo
+*.pyd
 
 # Environment variables
 .env
