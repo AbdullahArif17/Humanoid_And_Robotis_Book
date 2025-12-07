@@ -1,0 +1,25 @@
+# Docusaurus build artifacts
+.docusaurus/
+build/
+node_modules/
+.yarn/
+.pnp.cjs
+.pnp.loader.cjs
+
+# RAG Chatbot backend
+rag-chatbot/__pycache__/
+rag-chatbot/venv/
+rag-chatbot/.env
+
+# Environment variables
+.env
+.flaskenv
+
+# Docusaurus generated files
+book/build/
+book/.docusaurus/
+book/node_modules/
+book/yarn.lock
+book/.yarn/
+book/.pnp.cjs
+book/.pnp.loader.cjs

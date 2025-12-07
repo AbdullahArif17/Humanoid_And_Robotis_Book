@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(.specify/scripts/bash/create-phr.sh:*)",
+      "Bash(git fetch:*)",
+      "Bash(.specify/scripts/powershell/create-new-feature.ps1:*)",
+      "Bash(git checkout:*)",
+      "Bash(.specify/scripts/powershell/check-prerequisites.ps1:*)",
+      "SlashCommand(/sp.phr \"Review Project Files\" general)",
+      "Bash(powershell.exe:*)",
+      "Bash(git rev-parse --git-dir)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

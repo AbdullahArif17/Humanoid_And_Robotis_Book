@@ -1,55 +1,90 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+Version change: 1.0.0 → 2.0.0
+List of modified principles:
+  - Accuracy → Comprehensive & Rigorous Content
+  - Clarity → Course-Aligned Structure & Content
+  - Reproducibility → Clarity & Accuracy
+  - Rigor → Deliverable Format & Length
+  - Added Principle 5: Instructional Content
+  - Added Principle 6: Optional Advanced Steps
+Added sections:
+  - Key Standards and Constraints (Expanded)
+  - Instructions and Success Criteria (Expanded)
+Removed sections: None
+Templates requiring updates:
+  - .specify/templates/plan-template.md: ⚠ pending (generic, needs adaptation for book context)
+  - .specify/templates/spec-template.md: ⚠ pending (generic, needs adaptation for book context)
+  - .specify/templates/tasks-template.md: ⚠ pending (generic, needs adaptation for book context)
+  - .specify/templates/commands/sp.constitution.md: ⚠ pending (file not found)
+  - README.md: ⚠ pending (file not found)
+  - docs/quickstart.md: ⚠ pending (file not found)
+Follow-up TODOs:
+  - Adapt existing templates (.specify/templates/plan-template.md, .specify/templates/spec-template.md, .specify/templates/tasks-template.md) to align with the book context or create new templates if more appropriate.
+  - Create .specify/templates/commands/sp.constitution.md if needed for specific constitution-related commands.
+  - Create README.md and docs/quickstart.md if desired for the project, reflecting the new constitution's principles.
+-->
+# Physical AI & Humanoid Robotics Book Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### Comprehensive & Rigorous Content
+Generate a comprehensive, academically rigorous, and structured book on Physical AI & Humanoid Robotics suitable for students in a technical course. Include simulation, ROS 2, NVIDIA Isaac, VLA, and humanoid robotics content, integrating real-world and simulated robotics concepts.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### Course-Aligned Structure & Content
+Structured in chapters corresponding to modules and weekly topics. Emphasis on Physical AI principles, embodied intelligence, humanoid robot design, simulation, AI perception, and Vision-Language-Action integration. Input Reference: Course outline, modules, weekly breakdown, hardware requirements, lab options, and capstone project description (as provided).
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### Clarity & Accuracy
+Writing clarity: Flesch-Kincaid grade 10–12. All technical claims must be accurate and reproducible; cite sources where appropriate (APA style).
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### Deliverable Format & Length
+Book length: 50–80 pages (approx. 20,000–40,000 words). Output in Markdown or Docusaurus-compatible format, ready for GitHub Pages deployment.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### Instructional Content
+Generate a table of contents with chapters for each module and week. For each chapter: Include theoretical explanation (Physical AI, robotics principles), practical implementation examples (ROS 2 code snippets, Gazebo simulation steps, Isaac Sim instructions, Unity visualization tips), hardware guidance (Jetson, RealSense, Edge Kits, and optional robot options). Add diagrams, flowcharts, or tables to explain complex systems. Add a capstone project chapter: Autonomous humanoid performing VLA tasks, voice-to-action, navigation, manipulation. Include FAQs, troubleshooting tips, and learning outcomes per chapter. Ensure RAG-readiness: Chunk text into retrievable sections for embedding in a chatbot. Provide a reference section with URLs or papers for all factual claims.
 
-### [PRINCIPLE_6_NAME]
+### Optional Advanced Steps
+Use a “Code Snippet Generator” subagent to automatically produce ROS 2, Gazebo, Isaac, or VLA example code blocks. Use a “Diagram Generator” subagent to suggest diagrams for complex robotic systems. Use a “RAG Sectioner” subagent to split book into retrievable sections for chatbot integration.
 
+## Key Standards and Constraints
 
-[PRINCIPLE__DESCRIPTION]
+**Key Standards:**
+- Include diagrams, tables, and code snippets (ROS 2, Gazebo, Isaac, VLA).
+- All technical claims must be accurate and reproducible; cite sources where appropriate (APA style).
+- Writing clarity: Flesch-Kincaid grade 10–12.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+**Constraints:**
+- Book length: 50–80 pages (approx. 20,000–40,000 words).
+- Structured in chapters corresponding to modules and weekly topics.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+## Instructions and Success Criteria
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+**Instructions to Claude Code:**
+- Generate a table of contents with chapters for each module and week.
+- For each chapter:
+    - Include theoretical explanation (Physical AI, robotics principles).
+    - Provide practical implementation examples: ROS 2 code snippets, Gazebo simulation steps, Isaac Sim instructions, Unity visualization tips.
+    - Include hardware guidance: Jetson, RealSense, Edge Kits, and optional robot options.
+    - Add diagrams, flowcharts, or tables to explain complex systems.
+    - Add a capstone project chapter: Autonomous humanoid performing VLA tasks, voice-to-action, navigation, manipulation.
+    - Include FAQs, troubleshooting tips, and learning outcomes per chapter.
+    - Ensure RAG-readiness: Chunk text into retrievable sections for embedding in a chatbot.
+    - Provide a reference section with URLs or papers for all factual claims.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+**Optional Advanced Step (Claude Code Subagents / Skills):**
+- “Code Snippet Generator”: Automatically produce ROS 2, Gazebo, Isaac, or VLA example code blocks.
+- “Diagram Generator”: Suggest diagrams for complex robotic systems.
+- “RAG Sectioner”: Split book into retrievable sections for chatbot integration.
+
+**Success Criteria:**
+- Comprehensive coverage of Physical AI, humanoid robotics, simulation, ROS 2, NVIDIA Isaac, and VLA.
+- Book content aligns with course outline, modules, and weekly breakdown.
+- All technical claims are accurate, reproducible, and cited (APA style).
+- Book is between 50-80 pages (20,000-40,000 words).
+- Output is in Markdown or Docusaurus-compatible format, ready for GitHub Pages deployment.
+- RAG-readiness is ensured for chatbot integration.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+The Constitution outlines the core principles, standards, and guidelines for generating the 'Physical AI & Humanoid Robotics' book. Amendments require documentation, approval, and a migration plan.
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
-
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 2.0.0 | **Ratified**: 2025-12-04 | **Last Amended**: 2025-12-04

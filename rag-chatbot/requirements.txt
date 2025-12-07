@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+python-dotenv
+qdrant-client
+asyncpg
+openai
+pydantic-settings
+sentence-transformers

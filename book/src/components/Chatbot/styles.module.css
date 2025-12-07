@@ -1,0 +1,109 @@
+.chatbotContainer {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--ifm-color-emphasis-300);
+    border-radius: var(--ifm-border-radius);
+    height: 500px; /* Fixed height for the chatbot window */
+    max-width: 400px; /* Max width for the chatbot window */
+    margin: 20px auto; /* Center the chatbot and add some margin */
+    box-shadow: var(--ifm-global-shadow-md);
+    font-family: var(--ifm-font-family-base);
+}
+
+.chatHeader {
+    background-color: var(--ifm-color-primary);
+    color: white;
+    padding: var(--ifm-spacing-md);
+    border-top-left-radius: var(--ifm-border-radius);
+    border-top-right-radius: var(--ifm-border-radius);
+    font-weight: bold;
+    text-align: center;
+}
+
+.chatMessages {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: var(--ifm-spacing-md);
+    background-color: var(--ifm-background-color);
+}
+
+.chatMessage {
+    margin-bottom: var(--ifm-spacing-sm);
+    padding: var(--ifm-spacing-sm);
+    border-radius: var(--ifm-border-radius);
+    max-width: 80%;
+}
+
+.user {
+    background-color: var(--ifm-color-primary-light);
+    color: var(--ifm-color-primary-dark);
+    align-self: flex-end; /* Align user messages to the right */
+    margin-left: auto; /* Push to the right */
+}
+
+.ai {
+    background-color: var(--ifm-color-emphasis-200);
+    color: var(--ifm-font-color-base);
+    align-self: flex-start; /* Align AI messages to the left */
+    margin-right: auto; /* Push to the left */
+}
+
+.chatInputContainer {
+    display: flex;
+    padding: var(--ifm-spacing-md);
+    border-top: 1px solid var(--ifm-color-emphasis-300);
+    background-color: var(--ifm-background-color);
+}
+
+.chatInput {
+    flex-grow: 1;
+    border: 1px solid var(--ifm-color-emphasis-400);
+    border-radius: var(--ifm-border-radius);
+    padding: var(--ifm-spacing-sm);
+    margin-right: var(--ifm-spacing-sm);
+    font-size: var(--ifm-font-size-base);
+}
+
+.sendButton {
+    background-color: var(--ifm-color-primary);
+    color: white;
+    border: none;
+    border-radius: var(--ifm-border-radius);
+    padding: var(--ifm-spacing-sm) var(--ifm-spacing-md);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.sendButton:hover {
+    background-color: var(--ifm-color-primary-dark);
+}
+
+.sendButton:disabled {
+    background-color: var(--ifm-color-emphasis-400);
+    cursor: not-allowed;
+}
+
+.loadingDots {
+  display: inline-block;
+}
+
+.loadingDots span {
+  animation: blink 1.4s infinite linear;
+}
+
+.loadingDots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loadingDots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  20% {
+    opacity: 1;
+  }
+}
