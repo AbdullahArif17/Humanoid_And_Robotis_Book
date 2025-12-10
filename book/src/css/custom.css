@@ -1,24 +1,15 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * Copyright (c) 2017-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  */
 
-/* You can override the default Infima variables here. */
-:root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-}
+/**
+ * Custom CSS for the Humanoid & Robotics Book
+ */
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
+:root {
   --ifm-color-primary: #25c2a0;
   --ifm-color-primary-dark: #21af90;
   --ifm-color-primary-darker: #1fa588;
@@ -26,5 +17,72 @@
   --ifm-color-primary-light: #29d5b0;
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-code-font-size: 95%;
+}
+
+.docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
+html[data-theme='dark'] .docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Custom styles for robotics content */
+.robotics-diagram {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.robotics-diagram img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Code block styling for ROS/robotics code */
+.ros-code {
+  background-color: #f8f8f8;
+  border-left: 4px solid #25c2a0;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+html[data-theme='dark'] .ros-code {
+  background-color: #2a2a2a;
+}
+
+/* Special styling for lab sections */
+.lab-section {
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+html[data-theme='dark'] .lab-section {
+  background-color: #2d2d2d;
+  border: 1px solid #444;
+}
+
+.lab-section h3 {
+  margin-top: 0;
+  color: #25c2a0;
+}
+
+/* Styling for key concepts */
+.key-concept {
+  border-left: 4px solid #4285f4;
+  background-color: #f0f7ff;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+}
+
+html[data-theme='dark'] .key-concept {
+  background-color: #1a2740;
 }

@@ -1,32 +1,46 @@
-# Introduction: Embarking on the Journey of Physical AI & Humanoid Robotics
+---
+sidebar_position: 1
+---
 
-Welcome to "Physical AI & Humanoid Robotics: From Theory to Autonomous Action"! This book is your comprehensive guide to understanding, designing, and building the intelligent robotic systems of the future. In an era where artificial intelligence is moving beyond the digital realm and into the physical world, the convergence of advanced AI techniques with sophisticated robotic platforms is creating unprecedented opportunities and challenges.
+# Introduction
 
-## Who is this Book For?
+Welcome to the comprehensive guide on **Physical AI & Humanoid Robotics**! This book is designed to take you on a journey from the fundamentals of robotic systems to advanced AI integration, preparing you for the future of humanoid robotics.
 
-This book is crafted for students, researchers, and professionals in computer science, robotics, artificial intelligence, and engineering who are eager to delve into the practicalities of physical AI and humanoid robotics. Whether you're a beginner looking to grasp core concepts or an experienced developer seeking to implement advanced systems, this guide provides a clear pathway from foundational theory to hands-on application.
+## Overview
 
-## What You Will Learn
+This book is structured into four comprehensive modules, each building upon the previous one:
 
-Our journey through Physical AI and humanoid robotics will cover critical areas essential for developing autonomous and intelligent robots:
+1. **Module 1: The Robotic Nervous System (ROS 2)** - Introduction to the Robot Operating System as the foundational software framework
+2. **Module 2: The Digital Twin (Gazebo & Unity)** - Physics simulation, environment building, and sensor simulation
+3. **Module 3: The AI-Robot Brain (NVIDIA Isaac™)** - Advanced AI perception, navigation, and learning
+4. **Module 4: Vision-Language-Action (VLA)** - Integrating LLMs with robotics for voice-to-action and cognitive planning
 
-*   **The Robotic Nervous System (ROS 2)**: Master the Robot Operating System 2, the de-facto standard framework for robotics development, and understand how it orchestrates complex robotic behaviors.
-*   **The Digital Twin (Gazebo & Unity)**: Explore the power of high-fidelity simulation environments like Gazebo and Unity to design, test, and validate robotic systems in a virtual world before deploying to hardware.
-*   **The AI-Robot Brain (NVIDIA Isaac™)**: Dive into the NVIDIA Isaac ecosystem, leveraging cutting-edge tools for perception, cognitive AI, and reinforcement learning to imbue robots with intelligence.
-*   **Vision-Language-Action (VLA)**: Understand how to integrate large language models (LLMs) with robotic systems, enabling natural language understanding, cognitive planning, and multi-modal human-robot interaction.
+Each module includes practical labs, code examples, and integration exercises to provide hands-on experience with real-world robotics challenges.
 
-## Our Approach: Spec-Driven Development & Interactive Learning
+## Prerequisites
 
-This book embraces a Spec-Driven Development (SDD) philosophy, emphasizing clear specifications and practical implementation. Each module is designed to build upon previous knowledge, guiding you through step-by-step exercises and real-world examples.
+Before diving into this book, you should have:
 
-To enhance your learning experience, we've integrated a **Retrieval-Augmented Generation (RAG) Chatbot** directly into the book. This intelligent assistant is powered by OpenAI Agents, Qdrant Cloud for vector search, and a FastAPI backend, allowing you to:
+- Basic programming experience (Python preferred)
+- Understanding of fundamental mathematics (linear algebra, calculus)
+- Familiarity with command-line interfaces
+- Basic knowledge of robotics concepts (helpful but not required)
 
-*   Ask questions about the entire book content.
-*   Get context-aware answers by selecting specific text segments.
-*   Deepen your understanding through interactive Q&A.
+## Interactive Learning
 
-## Join Us on This Exciting Journey
+This book features an integrated RAG (Retrieval-Augmented Generation) chatbot that can answer questions about the book content. You can ask questions about specific sections or the entire book, making your learning experience more interactive and personalized.
 
-The field of Physical AI and humanoid robotics is rapidly evolving, promising to revolutionize industries and redefine human-technology interaction. By the end of this book, you will not only have a strong theoretical foundation but also the practical skills to contribute to this exciting frontier.
+## Hardware Considerations
 
-Let's begin!
+While this book focuses on software and AI aspects of robotics, it's important to understand the hardware context:
+
+- **Digital Twin Workstation**: NVIDIA RTX series GPU, Ubuntu 22.04 LTS, 32GB+ RAM
+- **Edge Computing**: Jetson Orin for deploying AI models
+- **Sensors**: RealSense D435i depth camera, IMUs, microphones
+- **Robots**: Unitree Go2, Unitree G1, Hiwonder humanoid, or Robotis OP3
+
+## Getting Started
+
+Begin with Module 1 to establish a solid foundation in ROS 2, the cornerstone of modern robotics software development. Each module is designed to be self-contained while building upon previous concepts.
+
+Let's begin your journey into the fascinating world of Physical AI and Humanoid Robotics!

@@ -32,9 +32,9 @@ description: "Task list for Hackathon Book Project Implementation"
 - [x] T002 Configure Docusaurus for GitHub Pages deployment in `book/docusaurus.config.js`
 - [x] T003 Create initial `book/docs` directory and `book/sidebar.js`
 - [x] T004 Create `rag-chatbot/` directory and initial FastAPI app structure in `rag-chatbot/app/`
-- [ ] T005 Create `.claude/` directory for optional subagents/skills
 - [x] T005 Create `.claude/` directory for optional subagents/skills
-- [ ] T006 Add Docusaurus and initial RAG chatbot backend to `.gitignore`
+- [x] T005 Create `.claude/` directory for optional subagents/skills
+- [x] T006 Add Docusaurus and initial RAG chatbot backend to `.gitignore`
 - [x] T006 Add Docusaurus and initial RAG chatbot backend to `.gitignore`
 
 ---
@@ -45,11 +45,11 @@ description: "Task list for Hackathon Book Project Implementation"
 
 **⚠️ CRITICAL**: No RAG chatbot integration can begin until this phase is complete
 
-- [ ] T007 [P] Set up Neon Serverless Postgres instance and obtain connection string
-- [ ] T008 [P] Set up Qdrant Cloud Free Tier instance and obtain API key/endpoint
-- [ ] T009 [P] Develop Python script for markdown parsing and text chunking in `rag-chatbot/app/core/chunking.py`
+- [x] T007 [P] Set up Neon Serverless Postgres instance and obtain connection string
+- [x] T008 [P] Set up Qdrant Cloud Free Tier instance and obtain API key/endpoint
 - [x] T009 [P] Develop Python script for markdown parsing and text chunking in `rag-chatbot/app/core/chunking.py`
-- [ ] T010 [P] Develop Python script for embedding generation using chosen model in `rag-chatbot/app/core/embeddings.py`
+- [x] T009 [P] Develop Python script for markdown parsing and text chunking in `rag-chatbot/app/core/chunking.py`
+- [x] T010 [P] Develop Python script for embedding generation using chosen model in `rag-chatbot/app/core/embeddings.py`
 - [x] T010 [P] Develop Python script for embedding generation using chosen model in `rag-chatbot/app/core/embeddings.py`
 
 **Checkpoint**: Foundation ready - book content generation and RAG chatbot core development can now proceed.
@@ -178,14 +178,14 @@ description: "Task list for Hackathon Book Project Implementation"
 
 **Purpose**: Implement and integrate the core RAG chatbot functionality.
 
-- [ ] T064 [RAG] Develop FastAPI endpoints for user queries in `rag-chatbot/app/api/`
-- [ ] T065 [RAG] Implement vector search (retrieval) in Qdrant via FastAPI in `rag-chatbot/app/core/`
-- [ ] T066 [RAG] Integrate LLM (e.g., OpenAI API) for response generation in `rag-chatbot/app/core/`
-- [ ] T067 [RAG] Implement chat history and context management with Neon Serverless Postgres in `rag-chatbot/app/db/`
-- [ ] T068 [RAG] Integrate ChatKit SDK within Docusaurus frontend for chat UI/interaction in `book/src/components/Chatbot.js` (example path)
-- [ ] T069 [RAG] Develop unit tests for FastAPI endpoints in `rag-chatbot/app/api/tests/`
-- [ ] T070 [RAG] Develop integration tests for end-to-end RAG chatbot flow (`rag-chatbot/app/tests/integration/`)
-- [ ] T071 [RAG] Develop user acceptance tests (UAT) for chatbot accuracy and response relevance
+- [x] T064 [RAG] Develop FastAPI endpoints for user queries in `rag-chatbot/app/api/`
+- [x] T065 [RAG] Implement vector search (retrieval) in Qdrant via FastAPI in `rag-chatbot/app/core/`
+- [x] T066 [RAG] Integrate LLM (e.g., OpenAI API) for response generation in `rag-chatbot/app/core/`
+- [x] T067 [RAG] Implement chat history and context management with Neon Serverless Postgres in `rag-chatbot/app/db/`
+- [x] T068 [RAG] Integrate ChatKit SDK within Docusaurus frontend for chat UI/interaction in `book/src/components/Chatbot.js` (example path)
+- [x] T069 [RAG] Develop unit tests for FastAPI endpoints in `rag-chatbot/app/api/tests/`
+- [x] T070 [RAG] Develop integration tests for end-to-end RAG chatbot flow (`rag-chatbot/app/tests/integration/`)
+- [x] T071 [RAG] Develop user acceptance tests (UAT) for chatbot accuracy and response relevance
 
 **Checkpoint**: RAG chatbot core functionality and integration are complete.
 
@@ -195,10 +195,10 @@ description: "Task list for Hackathon Book Project Implementation"
 
 **Purpose**: Deploy the book and chatbot, and perform final review and tuning.
 
-- [ ] T072 [DEPLOY] Deploy Docusaurus book to GitHub Pages (configure `package.json` scripts)
-- [ ] T073 [DEPLOY] Deploy RAG chatbot FastAPI backend to chosen cloud platform (e.g., Dockerize via `rag-chatbot/Dockerfile`)
-- [ ] T074 [POLISH] Conduct final review of all book content (accuracy, clarity, readability)
-- [ ] T075 [POLISH] Perform RAG chatbot tuning and optimization for response quality
+- [x] T072 [DEPLOY] Deploy Docusaurus book to GitHub Pages (configure `package.json` scripts)
+- [x] T073 [DEPLOY] Deploy RAG chatbot FastAPI backend to chosen cloud platform (e.g., Dockerize via `rag-chatbot/Dockerfile`)
+- [x] T074 [POLISH] Conduct final review of all book content (accuracy, clarity, readability)
+- [x] T075 [POLISH] Perform RAG chatbot tuning and optimization for response quality
 
 **Checkpoint**: Project deployed and polished.
 
@@ -208,10 +208,10 @@ description: "Task list for Hackathon Book Project Implementation"
 
 **Purpose**: Implement custom Claude Code Subagents and Agent Skills.
 
-- [ ] T076 [BONUS] Implement "Book Sectioner" Subagent in `.claude/subagents/book-sectioner.md`
-- [ ] T077 [BONUS] Implement "Code Example Generator" Agent Skill in `.claude/skills/code-example-generator.md`
-- [ ] T078 [BONUS] Implement "Diagram Suggester" Agent Skill in `.claude/skills/diagram-suggester.md`
-- [ ] T079 [BONUS] Demonstrate dynamic loading and usage of all implemented Subagents/Skills (documentation/example script).
+- [x] T076 [BONUS] Implement "Book Sectioner" Subagent in `.claude/subagents/book-sectioner.md`
+- [x] T077 [BONUS] Implement "Code Example Generator" Agent Skill in `.claude/skills/code-example-generator.md`
+- [x] T078 [BONUS] Implement "Diagram Suggester" Agent Skill in `.claude/skills/diagram-suggester.md`
+- [x] T079 [BONUS] Demonstrate dynamic loading and usage of all implemented Subagents/Skills (documentation/example script).
 
 **Checkpoint**: Bonus tasks for reusable intelligence are complete.
 

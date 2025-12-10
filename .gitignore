@@ -1,31 +1,97 @@
-# Docusaurus build artifacts
-.docusaurus/
-build/
+# Dependencies
 node_modules/
-.yarn/
-.pnp.cjs
-.pnp.loader.cjs
-
-# RAG Chatbot backend
-rag-chatbot/__pycache__/
-rag-chatbot/**/__pycache__/
-rag-chatbot/venv/
-rag-chatbot/.env
-rag-chatbot/.pytest_cache/
-rag-chatbot/**/.pytest_cache/
+__pycache__/
 *.pyc
 *.pyo
 *.pyd
+.Python
+env/
+env.example/
+venv/
+.venv/
+.conda/
+.venv.bak/
+.conda.bak/
+.conda-env/
+# .env.example # Keep this commented out or removed to track the example file
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build outputs
+dist/
+build/
+*.egg-info/
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.nyc_output/
+coverage/
+junit.xml
+coverage-final.json
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.pnpm-debug.log*
 
 # Environment variables
-.env
-.flaskenv
+.env*
+!.env.example
 
-# Docusaurus generated files
-book/build/
-book/.docusaurus/
-book/node_modules/
-book/yarn.lock
-book/.yarn/
-book/.pnp.cjs
-book/.pnp.loader.cjs
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Docusaurus
+.docusaurus/
+.cache/
+.server/
+.temp/
+
+# Python
+*.py[cod]
+*$py.class
+*$pyc.*
+.pytest_cache/
+.pyre/
+.pytype/
+.coverage.xml
+.coverage.*
+
+# FastAPI/Backend
+*.db
+*.db-journal
+__pycache__/
+*.pyc
+.env
+.env.local
+.env.dev
+.env.test
+.env.local.example
+.env.test.example
+
+# Docker
+.dockerignore
+*.dockerignore
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

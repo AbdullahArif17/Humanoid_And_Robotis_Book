@@ -1,33 +1,21 @@
-from sqlalchemy import create_engine, Column, String, DateTime, Text, Integer
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from datetime import datetime
-from app.config import settings
+import os
+from sqlalchemy.ext.declarative import declarative_base
+from dotenv import load_dotenv
 
-# Create database engine
-engine = create_engine(
-    settings.database_url,
-    pool_pre_ping=True,
-    pool_size=5,
-    max_overflow=10
-)
+load_dotenv()
 
-# Create session factory
+# Database setup
+DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://user:password@localhost/testdb")
+
+engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-# Base class for models
 Base = declarative_base()
 
-
 def get_db():
-    """Dependency to get database session."""
     db = SessionLocal()
     try:
         yield db
     finally:
         db.close()
-
-
-def init_db():
-    """Initialize database tables."""
-    Base.metadata.create_all(bind=engine)

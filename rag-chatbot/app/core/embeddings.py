@@ -1,56 +1,48 @@
+import os
 from typing import List
+import openai
 from openai import OpenAI
-from app.config import settings
-from tenacity import retry, stop_after_attempt, wait_exponential
+from dotenv import load_dotenv
 
+# Load environment variables
+load_dotenv()
 
-class EmbeddingGenerator:
-    """Generate embeddings using OpenAI API."""
-    
-    def __init__(self):
-        self.client = OpenAI(api_key=settings.openai_api_key)
-        self.model = settings.openai_embedding_model
-    
-    @retry(
-        stop=stop_after_attempt(3),
-        wait=wait_exponential(multiplier=1, min=2, max=10)
-    )
-    def generate_embedding(self, text: str) -> List[float]:
-        """
-        Generate embedding for a single text.
-        
-        Args:
-            text: Text to embed
-            
-        Returns:
-            List of floats representing the embedding vector
-        """
-        response = self.client.embeddings.create(
-            model=self.model,
-            input=text
-        )
-        return response.data[0].embedding
-    
-    @retry(
-        stop=stop_after_attempt(3),
-        wait=wait_exponential(multiplier=1, min=2, max=10)
-    )
-    def generate_embeddings_batch(self, texts: List[str]) -> List[List[float]]:
-        """
-        Generate embeddings for multiple texts in a batch.
-        
-        Args:
-            texts: List of texts to embed
-            
-        Returns:
-            List of embedding vectors
-        """
-        response = self.client.embeddings.create(
-            model=self.model,
-            input=texts
+# Initialize OpenAI client only if API key is provided
+openai_api_key = os.getenv("OPENAI_API_KEY")
+if not openai_api_key or openai_api_key.strip() == "":
+    raise Exception("OPENAI_API_KEY not set")
+client = OpenAI(api_key=openai_api_key)
+
+def get_embeddings(texts: List[str], model: str = os.getenv("OPENAI_EMBEDDING_MODEL", "text-embedding-3-small")) -> List[List[float]]:
+    """
+    Generate embeddings for a list of texts using OpenAI's embedding API.
+
+    Args:
+        texts: List of text strings to embed
+        model: OpenAI embedding model to use
+
+    Returns:
+        List of embedding vectors
+    """
+    try:
+        response = client.embeddings.create(
+            input=texts,
+            model=model
         )
         return [item.embedding for item in response.data]
+    except Exception as e:
+        print(f"Error generating embeddings: {e}")
+        raise e
 
+def get_embedding(text: str, model: str = os.getenv("OPENAI_EMBEDDING_MODEL", "text-embedding-3-small")) -> List[float]:
+    """
+    Generate embedding for a single text string.
 
-# Global instance
-embedding_generator = EmbeddingGenerator()
+    Args:
+        text: Text string to embed
+        model: OpenAI embedding model to use
+
+    Returns:
+        Embedding vector
+    """
+    return get_embeddings([text], model)[0]

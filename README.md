@@ -1,14 +1,16 @@
-# Physical AI & Humanoid Robotics Book
+# Humanoid & Robotics Book - Production Ready
 
-A comprehensive technical book on Physical AI and Humanoid Robotics, built with Docusaurus and powered by an intelligent RAG chatbot.
+A comprehensive, technical book on "Physical AI & Humanoid Robotics" with an integrated RAG (Retrieval-Augmented Generation) chatbot, fully configured for production deployment.
 
 ## 🚀 Features
 
-- 📚 **Comprehensive Content**: 4 complete modules covering ROS 2, Digital Twins, NVIDIA Isaac, and Vision-Language-Action
-- 🤖 **RAG-Powered Chatbot**: Interactive Q&A using OpenAI, Qdrant, and Neon Postgres
-- 🎯 **Context-Aware**: Ask questions about selected text for targeted answers
-- 💬 **Persistent Chat History**: Conversations saved across sessions
-- 🌐 **Production Ready**: Deployed to GitHub Pages with cloud backend
+- **Interactive Documentation**: Docusaurus-based book with comprehensive content on ROS 2, Gazebo/Unity, NVIDIA Isaac, and Vision-Language-Action (VLA)
+- **AI-Powered Chatbot**: RAG-based chatbot that can answer questions about the entire book content
+- **Production Ready**: Fully configured for deployment with Docker, Nginx, and SSL support
+- **Scalable Architecture**: Microservices architecture with PostgreSQL and Qdrant vector database
+- **Comprehensive Content**: 4 complete modules covering ROS 2, Digital Twins, NVIDIA Isaac, and Vision-Language-Action
+- **Context-Aware**: Ask questions about selected text for targeted answers
+- **Persistent Chat History**: Conversations saved across sessions
 
 ## 📖 Book Modules
 
@@ -51,6 +53,58 @@ Autonomous humanoid performing complex VLA tasks integrating all modules.
 - OpenAI API key
 - Qdrant Cloud account
 - Neon Postgres account
+
+### Running the Book (Frontend)
+
+1. Navigate to the book directory:
+   ```bash
+   cd book
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm start
+   ```
+
+The book will be available at `http://localhost:3000`
+
+### Running the RAG Chatbot (Backend)
+
+1. Navigate to the rag-chatbot directory:
+   ```bash
+   cd rag-chatbot
+   ```
+
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Set up environment variables:
+   ```bash
+   cp .env.example .env
+   # Edit .env with your actual credentials
+   ```
+
+4. Set up Qdrant collection:
+   ```bash
+   python scripts/setup_qdrant.py
+   ```
+
+5. Ingest book content:
+   ```bash
+   python scripts/ingest_book_content.py
+   ```
+
+6. Run the server:
+   ```bash
+   uvicorn app.main:app --reload
+   ```
 
 ### Local Development
 
@@ -95,6 +149,72 @@ uvicorn app.main:app --reload
 
 Backend API will be available at `http://localhost:8000`
 
+## 🏗️ Production Deployment
+
+### Prerequisites for Production
+
+- Docker and Docker Compose
+- SSL certificates (optional but recommended)
+- Production domain name
+- Cloud hosting (AWS, GCP, Azure, or VPS)
+
+### Environment Setup
+
+Create a `.env` file in the `rag-chatbot` directory with production values:
+
+```env
+# OpenAI Configuration
+OPENAI_API_KEY=your_production_openai_api_key
+OPENAI_MODEL=gpt-4o-mini
+OPENAI_EMBEDDING_MODEL=text-embedding-3-small
+
+# Qdrant Configuration
+QDRANT_URL=your_production_qdrant_url
+QDRANT_API_KEY=your_production_qdrant_api_key
+QDRANT_COLLECTION_NAME=humanoid_robotics_book
+
+# Database Configuration
+DATABASE_URL=postgresql://username:password@production-db-host:5432/database_name
+
+# CORS Configuration
+CORS_ORIGINS=https://yourdomain.com,https://www.yourdomain.com
+
+# API Configuration
+API_HOST=0.0.0.0
+API_PORT=8000
+```
+
+### Automated Deployment
+
+1. Make the deployment script executable:
+   ```bash
+   chmod +x deploy.sh
+   ```
+
+2. Run the deployment script:
+   ```bash
+   ./deploy.sh
+   ```
+
+### Manual Deployment
+
+1. Build the frontend:
+   ```bash
+   cd book
+   npm install
+   npm run build
+   ```
+
+2. Deploy with Docker Compose:
+   ```bash
+   docker-compose -f docker-compose.prod.yml up -d
+   ```
+
+3. Ingest content into vector database:
+   ```bash
+   docker-compose -f docker-compose.prod.yml exec backend python scripts/ingest_book_content.py
+   ```
+
 ## 📦 Project Structure
 
 ```
@@ -128,49 +248,150 @@ Humanoid_And_Robotis_Book/
 │   │   ├── setup_qdrant.py      # Vector DB setup
 │   │   └── ingest_book_content.py  # Content ingestion
 │   ├── requirements.txt
-│   ├── Dockerfile
+│   ├── Dockerfile               # Production-ready Docker configuration
 │   └── README.md
 │
+├── ssl/                         # SSL certificates directory
+├── nginx.conf                   # Production Nginx configuration
+├── docker-compose.prod.yml      # Production Docker Compose
+├── deploy.sh                    # Automated deployment script
+├── DEPLOYMENT_GUIDE.md          # Comprehensive deployment documentation
+├── plan.md                      # Architecture plan
+├── tasks.md                     # Deployment tasks
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml            # GitHub Actions CI/CD
+│       └── deploy.yml           # GitHub Actions CI/CD
 │
-├── DEPLOYMENT.md                 # Deployment guide
-└── README.md                     # This file
+└── README.md                    # This file
 ```
 
-## 🌐 Deployment
+## 🌐 Production Architecture
 
-See [DEPLOYMENT.md](DEPLOYMENT.md) for complete deployment instructions.
+The production setup includes:
 
-### Quick Deployment Steps
+- **Nginx**: Reverse proxy with SSL termination and static file serving
+- **Docker**: Containerized services for consistency and scalability
+- **PostgreSQL**: Production database with backup capabilities
+- **Qdrant**: Vector database for semantic search
+- **Health Checks**: Built-in monitoring endpoints
+- **SSL Ready**: Configuration for HTTPS encryption
 
-1. **Setup Cloud Services**: Qdrant, Neon, OpenAI
-2. **Deploy Backend**: Render, Railway, or Docker
-3. **Ingest Content**: Run ingestion scripts
-4. **Deploy Frontend**: Push to GitHub (auto-deploys via Actions)
+### SSL Configuration
 
-## 📚 Documentation
+1. Place your SSL certificate and key in the `ssl/` directory:
+   ```
+   ssl/
+   ├── cert.pem (your SSL certificate)
+   └── key.pem (your private key)
+   ```
+
+2. Update `nginx.conf` with your domain name
+
+## 📊 Monitoring
+
+### Health Checks
+
+- Health endpoint: `https://yourdomain.com/health`
+- Backend API: `https://yourdomain.com/api/`
+- Frontend: `https://yourdomain.com/`
+
+### Logs
+
+View application logs:
+```bash
+docker-compose -f docker-compose.prod.yml logs -f
+```
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+1. **Environment Variables**: Ensure all required environment variables are set
+2. **Database Connection**: Verify PostgreSQL connection details
+3. **Qdrant Connection**: Check Qdrant URL and API key
+4. **OpenAI API**: Verify API key and rate limits
+
+### Debugging
+
+1. Check container status:
+   ```bash
+   docker-compose -f docker-compose.prod.yml ps
+   ```
+
+2. Check logs for specific service:
+   ```bash
+   docker-compose -f docker-compose.prod.yml logs backend
+   docker-compose -f docker-compose.prod.yml logs db
+   docker-compose -f docker-compose.prod.yml logs nginx
+   ```
+
+3. Test API endpoints:
+   ```bash
+   curl https://yourdomain.com/health
+   curl https://yourdomain.com/api/v1/chat -X POST -H "Content-Type: application/json" -d '{"message":"Hello","session_id":"test"}'
+   ```
+
+## 🛡️ Security
+
+- API keys stored in environment variables
+- Non-root user in Docker containers
+- SSL/TLS encryption
+- CORS policy enforcement
+- Rate limiting (configure as needed)
+- Secure database connections with SSL
+
+## 📈 Scaling
+
+- Multiple backend workers in Docker
+- Database connection pooling
+- CDN-ready static assets
+- Horizontal scaling support
+- Load balancing ready
+
+## 🔄 Updates
+
+To update the application:
+
+1. Pull latest code:
+   ```bash
+   git pull origin main
+   ```
+
+2. Rebuild and restart:
+   ```bash
+   docker-compose -f docker-compose.prod.yml build
+   docker-compose -f docker-compose.prod.yml up -d
+   ```
+
+## 📚 Content Management
+
+Content is managed through the Docusaurus documentation system. To update book content:
+
+1. Edit markdown files in `book/docs/`
+2. Rebuild the frontend
+3. Redeploy the static files
+
+## 🤖 Chatbot Training
+
+To retrain the RAG chatbot with new content:
+
+```bash
+docker-compose -f docker-compose.prod.yml exec backend python scripts/ingest_book_content.py
+```
+
+## 🚨 Emergency Procedures
+
+- To stop all services: `docker-compose -f docker-compose.prod.yml down`
+- To restart services: `docker-compose -f docker-compose.prod.yml restart`
+- To access backend shell: `docker-compose -f docker-compose.prod.yml exec backend bash`
+
+## 📝 Documentation
 
 - [Backend README](rag-chatbot/README.md) - RAG chatbot setup and API docs
-- [Deployment Guide](DEPLOYMENT.md) - Production deployment instructions
+- [Deployment Guide](DEPLOYMENT_GUIDE.md) - Comprehensive production deployment instructions
+- [Plan](plan.md) - Architecture and deployment planning
+- [Tasks](tasks.md) - Deployment task checklist
 - [Book Content](book/docs/) - All module documentation
-
-## 🧪 Testing
-
-### Frontend
-
-```bash
-cd book
-npm run build  # Test production build
-```
-
-### Backend
-
-```bash
-cd rag-chatbot
-pytest tests/ -v  # Run tests (when implemented)
-```
 
 ## 🤝 Contributing
 
