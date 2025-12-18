@@ -11,10 +11,10 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://abdullaharif17.github.io',
+  url: 'https://humanoid-and-robotis-book.vercel.app/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub Pages: https://<USERNAME>.github.io/<REPO>/
-  baseUrl: '/Humanoid_And_Robotis_Book/',
+  baseUrl: '/'
 
   // GitHub pages deployment config.
   organizationName: 'AbdullahArif17', // Usually your GitHub org/user name.
